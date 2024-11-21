@@ -65,7 +65,7 @@ class CrimeFragment : Fragment() {
             }
         }
 
-        titleField.addTextChangedListener(title Watcher)
+        titleField.addTextChangedListener(titleWatcher)
         solvedCheckBox.apply {
             setOnCheckedChangeListener { _, isChecked -> crime.isSolved = isChecked }
         }
