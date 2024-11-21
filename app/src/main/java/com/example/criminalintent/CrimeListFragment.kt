@@ -32,9 +32,7 @@ class CrimeListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =
-            inflater.inflate(R.layout.fragment_crime_list,
-                container, false)
+        val view = inflater.inflate(R.layout.fragment_crime_list, container, false)
 
         crimeRecyclerView = view.findViewById(R.id.crime_recycler_view) as RecyclerView
         crimeRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -51,8 +49,16 @@ class CrimeListFragment : Fragment() {
 
     private inner class CrimeHolder(view: View)
         : RecyclerView.ViewHolder(view) {
-        val titleTextView: TextView = itemView.findViewById(R.id.crime_title)
-        val dateTextView: TextView = itemView.findViewById(R.id.crime_date)
+        private lateinit var crime: Crime
+
+        private val titleTextView: TextView = itemView.findViewById(R.id.crime_title)
+        private val dateTextView: TextView = itemView.findViewById(R.id.crime_date)
+
+        fun bind(crime: Crime) {
+            this.crime = crime
+            titleTextView.text = this.crime.title
+            dateTextView.text = this.crime.date.toString()
+        }
     }
 
     private inner class CrimeAdapter(var crimes: List<Crime>) : RecyclerView.Adapter<CrimeHolder>() {
