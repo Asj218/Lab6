@@ -1,6 +1,8 @@
 package com.example.criminalintent
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,4 +25,36 @@ class CrimeFragment : Fragment() {
         titleField = view.findViewById(R.id.crime_title) as EditText
         return view
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        val titleWatcher = object : TextWatcher
+        {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+                // Это пространство оставлено пустым специально
+            }
+
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                crime.title = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) {
+                // И это
+            }
+        }
+
+        titleField.addTextChangedListener(title Watcher)
+    }
+
 }
