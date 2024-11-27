@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bignerdranch.android.criminalintent.CrimeDetailViewModel
 import java.util.UUID
@@ -54,7 +55,8 @@ class CrimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         crimeDetailViewModel.crimeLiveData.observe(
-            viewLifecycleOwner, Observer { crime ->
+            viewLifecycleOwner,
+            Observer { crime ->
                 crime?.let {
                     this.crime = crime
                     updateUI()
