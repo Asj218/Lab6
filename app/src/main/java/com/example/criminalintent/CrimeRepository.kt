@@ -3,6 +3,7 @@ package com.example.criminalintent
 import android.content.Context
 import androidx.room.Room
 import com.example.criminalintent.database.CrimeDatabase
+import java.util.UUID
 
 private const val DATABASE_NAME = "crimedatabase"
 
@@ -15,6 +16,9 @@ class CrimeRepository private constructor(context: Context) {
         ).build()
 
     private val crimeDao = database.crimeDao()
+
+    fun getCrimes(): List<Crime> = crimeDao.getCrimes()
+    fun getCrime(id: UUID): Crime? = crimeDao.getCrime(id)
 
     companion object {
         private var INSTANCE: CrimeRepository? =
