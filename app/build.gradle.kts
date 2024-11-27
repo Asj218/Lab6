@@ -47,6 +47,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.room:room-runtime:2.6.1")
+    implementation(libs.androidx.lifecycle.viewmodel.android)
     kapt("androidx.room:room-compiler:2.6.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
